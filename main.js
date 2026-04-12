@@ -12,13 +12,27 @@
         // --- INICIALIZACIÓN Y LÓGICA DIARIA ---
         function init() {
             const date = new Date();
-            todayString = date.toISOString().split('T')[0];
+            
+            // Forzar el reloj al horario de Madrid (soporta horario de invierno/verano de forma automática)
+            const formatter = new Intl.DateTimeFormat('en-US', {
+                timeZone: 'Europe/Madrid',
+                year: 'numeric', month: 'numeric', day: 'numeric'
+            });
+            const parts = formatter.formatToParts(date);
+            let year, month, day;
+            parts.forEach(p => {
+                if (p.type === 'year') year = parseInt(p.value);
+                if (p.type === 'month') month = parseInt(p.value);
+                if (p.type === 'day') day = parseInt(p.value);
+            });
 
-            // Calcular el número de día del año para rotar puzzles
-            const start = new Date(date.getFullYear(), 0, 0);
-            const diff = date - start;
-            const oneDay = 1000 * 60 * 60 * 24;
-            const dayOfYear = Math.floor(diff / oneDay);
+            todayString = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+
+            // Calcular matemáticamente el número de día correspondiente
+            const startUTC = Date.UTC(year, 0, 0);
+            const currentUTC = Date.UTC(year, month - 1, day);
+            const diff = currentUTC - startUTC;
+            const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));
 
             puzzleIndex = dayOfYear % database.length;
             document.getElementById('reto-title').innerText = `Reto #${dayOfYear}`;
@@ -253,6 +267,17 @@
                 alert("No se pudo copiar. Tu tiempo es: " + `${m}:${s}`);
             });
         }
+
+        // --- PREVENCIÓN DE ZOOM Y GESTOS (iOS Safari) ---
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
+        });
+        
+        document.addEventListener('touchmove', function(e) {
+            if (e.touches.length > 1) {
+                e.preventDefault(); // Bloquea pellizco con varios dedos
+            }
+        }, { passive: false });
 
         // Arrancar el juego
         init();
