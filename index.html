@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cincoku - Reto Diario</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Cincoku</h1>
+        <div class="subtitle" id="reto-title">Reto #--</div>
+        <div id="timer-container">
+            <div id="timer">00:00</div>
+            <button class="btn-small" onclick="togglePause()">Pausa</button>
+        </div>
+        <div id="error-msg" style="color: var(--conflict); font-weight: bold; display: none; margin-bottom: 20px;">¡Hay un error!</div>
+    </header>
+
+    <div id="grid-container">
+        <div id="grid"></div>
+
+        <div id="pause-overlay" class="overlay">
+            <h2>JUEGO EN PAUSA</h2>
+            <button class="menu-btn" onclick="togglePause()">Continuar</button>
+            <button class="menu-btn outline" onclick="restartGame()">Reiniciar Día</button>
+        </div>
+
+        <div id="win-overlay" class="overlay">
+            <h2 style="color: var(--success); font-size: 2rem; margin-bottom: 10px;">¡Victoria!</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 30px;" id="win-time-text"></p>
+            <button class="menu-btn" onclick="shareResult()">Copiar Resultado</button>
+        </div>
+    </div>
+
+    <div id="controls">
+        <button class="btn" onclick="inputNum(1)">1</button>
+        <button class="btn" onclick="inputNum(2)">2</button>
+        <button class="btn" onclick="inputNum(3)">3</button>
+        <button class="btn" onclick="inputNum(4)">4</button>
+        <button class="btn" onclick="inputNum(5)">5</button>
+        <button class="btn btn-eraser" onclick="inputNum(0)">🗑️</button>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
