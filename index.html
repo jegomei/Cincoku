@@ -5,17 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Cincoku - Reto Diario</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
     <header>
-        <h1>Cincoku</h1>
+        <div class="logo-container" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <img src="icon.png" alt="Cincoku Logo" style="width: 40px; height: 40px; border-radius: 8px;">
+            <h1 style="margin: 0;">Cincoku</h1>
+        </div>
         <div class="subtitle" id="reto-title">Reto #--</div>
         <div id="timer-container">
             <div id="timer">00:00</div>
-            <button class="btn-small" onclick="togglePause()">Pausa</button>
         </div>
         <div id="error-msg" style="color: var(--conflict); font-weight: bold; display: none; margin-bottom: 20px;">¡Hay un error!</div>
     </header>
@@ -42,7 +49,8 @@
         <button class="btn" onclick="inputNum(3)">3</button>
         <button class="btn" onclick="inputNum(4)">4</button>
         <button class="btn" onclick="inputNum(5)">5</button>
-        <button class="btn btn-eraser" onclick="inputNum(0)">🗑️</button>
+        <button class="btn btn-eraser" onclick="inputNum(0)"><span class="material-symbols-outlined">delete</span></button>
+        <button class="btn btn-pause" onclick="togglePause()"><span class="material-symbols-outlined">pause</span></button>
     </div>
 
     <script src="data.js"></script>
