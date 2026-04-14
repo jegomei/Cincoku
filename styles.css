@@ -93,7 +93,7 @@
             touch-action: manipulation;
             cursor: pointer;
             position: relative;
-            color: #1976D2;
+            color: #4c29cc;
             font-weight: bold;
             box-sizing: border-box;
             border-right: 1px solid var(--border);
@@ -172,7 +172,7 @@
             max-height: 60px;
             border-radius: 50%;
             border: none;
-            background: #2601a6;
+            background: #4c29cc;
             color: white;
             font-size: 2.2rem;
             font-weight: bold;
