@@ -16,16 +16,19 @@
 <body>
 
     <header>
-        <div class="logo-container" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
-            <img src="icon.png" alt="Cincoku Logo" style="width: 40px; height: 40px; border-radius: 8px;">
-            <h1 style="margin: 0;">Cincoku</h1>
+        <div class="logo-container">
+            <img src="icon.png" alt="Cincoku Logo">
+            <div>
+                <h1>Cincoku</h1>
+                <div class="subtitle" id="reto-title">Reto #--</div>
+            </div>
         </div>
-        <div class="subtitle" id="reto-title">Reto #--</div>
-        <div id="timer-container">
-            <div id="timer">00:00</div>
-        </div>
-        <div id="error-msg" style="color: var(--conflict); font-weight: bold; display: none; margin-bottom: 20px;">¡Hay un error!</div>
     </header>
+
+    <div id="timer-container">
+        <div id="timer">00:00</div>
+    </div>
+    <div id="error-msg">¡Hay un error!</div>
 
     <div id="grid-container">
         <div id="grid"></div>
@@ -49,7 +52,6 @@
         <button class="btn" onclick="inputNum(3)">3</button>
         <button class="btn" onclick="inputNum(4)">4</button>
         <button class="btn" onclick="inputNum(5)">5</button>
-        <button class="btn btn-eraser" onclick="inputNum(0)"><span class="material-symbols-outlined">delete</span></button>
         <button class="btn btn-pause" onclick="togglePause()"><span class="material-symbols-outlined">pause</span></button>
     </div>
 
